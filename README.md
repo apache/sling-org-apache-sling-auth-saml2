@@ -1,8 +1,16 @@
-# Apache Sling SAML2 Handler (NOT FOR PRODUCTION)
+[![Apache Sling](https://sling.apache.org/res/logos/sling.png)](https://sling.apache.org)
 
-This contribution to the [Apache Sling](https://sling.apache.org) project;
- provides a SAML2 Web Profile Service Provider Authentication. 
 
+&#32;[![Build Status](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-auth-saml2/job/master/badge/icon)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-auth-saml2/job/master/)&#32;[![Test Status](https://img.shields.io/jenkins/tests.svg?jobUrl=https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-auth-saml2/job/master/)](https://ci-builds.apache.org/job/Sling/job/modules/job/sling-org-apache-sling-auth-saml2/job/master/test/?width=800&height=600)&#32;[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=apache_sling-org-apache-sling-auth-saml2&metric=coverage)](https://sonarcloud.io/dashboard?id=apache_sling-org-apache-sling-auth-saml2)&#32;[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=apache_sling-org-apache-sling-auth-saml2&metric=alert_status)](https://sonarcloud.io/dashboard?id=apache_sling-org-apache-sling-auth-saml2)&#32;[![JavaDoc](https://www.javadoc.io/badge/org.apache.sling/org.apache.sling.auth.saml2.svg)](https://www.javadoc.io/doc/org.apache.sling/org-apache-sling-auth-core)&#32;[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.sling/org.apache.sling.auth.saml2/badge.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.sling%22%20a%3A%22org.apache.sling.auth.saml2%22)&#32;[![auth](https://sling.apache.org/badges/group-auth.svg)](https://github.com/apache/sling-aggregator/blob/master/docs/group/auth.md) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
+
+
+sling-org-apache-sling-auth-saml2
+
+# Apache Sling SAML2 Handler
+
+An OSGi bundle that provides a SAML2 Web Profile Service Provider Authentication for [Apache Sling](https://sling.apache.org) using [OpenSAML v4 libraries](https://wiki.shibboleth.net/confluence/display/OSAML/Home)
+  
 
 ## Overview
 https://en.wikipedia.org/wiki/SAML_2.0
@@ -18,7 +26,7 @@ such as Keycloak Server or Shibboleth IDP.
 - Java 11
 - Sling 11 or 12
 - An external SAML2 identity provider
-
+- The [oak-auth-external](https://mvnrepository.com/artifact/org.apache.jackrabbit/oak-auth-external) bundle must be installed and active
 
 ### User Management
 User management is based on the OSGi bundle configuration and SAML2 Assertion    
@@ -30,53 +38,9 @@ User management is based on the OSGi bundle configuration and SAML2 Assertion
   - `syncAttrs` can be used to synchronize user properties released by the IDP for profile properties such as given name, family name, email, and phone.      
    
 
-
-
-## Localhost Setup
-Procedure for localhost testing
-
-### Start and Configure an External Identity Provider 
-1. Start a Keycloak Server 
-`docker run -p 8484:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin  jboss/keycloak`
-2. Login using http://localhost:8484/auth/admin/ 
-   - username: admin, password: admin
-3. Configure a Realm   
-   - Click "Add Realm" 
-   - Select the file located at `saml-example/src/main/resources/sling-realm-export.json` 
-![](src/main/resources/realm-add.png)
-Note. The preconfigured realm contains configuration for the client and the groups, but does not contain users.
-4. Add user(s)
-   - Select Users under the "Sling" Realm
-      ![](src/main/resources/user-create.png)   
-   - Set user attributes; specifically "userid"   
-      ![](src/main/resources/user-set-attribute.png)
-   - Set user password 
-      ![](src/main/resources/user-set-password.png)
-   - Set user groups; specifically join "pcms-authors"
-      ![](src/main/resources/user-add-groups.png)  
-   
-
-
-
-### Sling SAML2 Service Provider Setup   
-
-1. Start Sling (Assuming a new instance of Sling 12-SNAPSHOT)
-2. Run `mvn clean install -P autoInstallBundle` from saml-handler project  
-Note: saml-handler is the core bundle offering SAML2 Sign on
-3. Run `mvn clean install -P autoInstallPackage` from saml-example project  
-Note: saml-example is example setup package containing:  OSGI configurations, service-user and ACL's. 
-This setup is detailed in the section below.
-
-
 #### Configurations, Service User and ACL's 
-Note: the following are contained in localhostExample-1.zip
 
-Provide a [JAAS OSGI Config](http://localhost:8080/system/console/configMgr/org.apache.felix.jaas.Configuration.factory) as shown below
-- jaas.controlFlag=Sufficient  
-- jaas.ranking=110  
-- jaas.realmName=jackrabbit.oak  
-- jaas.classname=org.apache.sling.auth.saml2.sp.Saml2LoginModule  
-![](src/main/resources/jaasConfiguration.png)
+##### Manual configurations set using /system/console/configMgr
 
 Provide a [Service User Mapper OSGI Config](http://localhost:8080/system/console/configMgr/org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended)
 - org.apache.sling.auth.saml2:Saml2UserMgtService=saml2-user-mgt
@@ -89,7 +53,7 @@ Set up the system user "saml2-user-mgt"
 ![](src/main/resources/saml2-user-mgt-acls.png)
 
    
-Provide a [SAML2 OSGI Configuration](http://localhost:8080/system/console/configMgr/org.apache.sling.auth.saml2.impl.SAML2ConfigServiceImpl) 
+Provide a [SAML2 OSGI Configuration](http://localhost:8080/system/console/configMgr/org.apache.sling.auth.saml2.AuthenticationHandlerSAML2) 
 - path=http://localhost:8080/  
 - service.ranking=1000  
 - entityID=http://localhost:8080/  
@@ -114,17 +78,23 @@ Notes:
    - After configuring the SAML2 authentication handler, the Sling Form login can still be accessed directly http://localhost:8080/system/sling/form/login?resource=%2F
    - See below technical notes for certificate, keys, signing and encryption   
 
+
+[JAAS OSGI Config](http://localhost:8080/system/console/configMgr/org.apache.felix.jaas.Configuration.factory) is automatically created and removed upon bundle activation and deactivation as shown below
+- jaas.controlFlag=Sufficient  
+- jaas.ranking=110  
+- jaas.realmName=jackrabbit.oak  
+- jaas.classname=org.apache.sling.auth.saml2.sp.Saml2LoginModule  
+![](src/main/resources/jaasConfiguration.png)
+
+
 ## Test   
 Visit http://localhost:8080 and observe login takes place on the http://localhost:8484 Keycloak Server IDP
 ![](src/main/resources/userSignInToIDP.png)
 
-Enter credentials for the user you created, and observe user is granted access to the system.
+Enter credentials for the user you created. After the user authenticates at the IDP, they are redirected to the orginally requested resource.
 ![](src/main/resources/signedInUser.png)
 
 
-
-
- 
 ## Certificates, SSL, Signing and Encryption  
 This portion discusses encryption which can be very critical for the security of this solution. 
 
@@ -132,7 +102,7 @@ Decide a location on the file system for the Keystores. For example, under the s
       `$ mkdir sling/keys`  
       `$ cd sling/keys`
       
-### Enable Jetty HTTPS
+### Enable Jetty HTTPS (Localhost example only, Not for prod)
 It's a good idea to configure SSL for Jetty providing https binding. 
 
 1. Create KeyStore & generate a self-signed certificate (not for production). 
@@ -162,7 +132,7 @@ Aside from the Jetty SSL credentials discussed above, there are two other creden
 * Identity Provider (IDP) Signing Certificate    
 
 
-#### Keystore Setup (Localhost) Example 
+#### Keystore Setup (Localhost example only, Not for prod)
 The SP Keypair is used by the IDP and SP to encrypt and decrypt SAML2 responses. It should be unique for each service provider.  
 Note that the SP Keypair is also used to cryptographically sign SAML requests sent from the SP to the IDP.
 

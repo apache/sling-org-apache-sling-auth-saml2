@@ -1,0 +1,5 @@
+github:
+  description: An OSGi bundle that provides a SAML2 Web Profile Service Provider Authentication for Apache Sling
+  labels:
+    - sling
+    - javascript
