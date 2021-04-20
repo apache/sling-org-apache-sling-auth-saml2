@@ -63,7 +63,7 @@ class TokenStore {
      * The name of the HMAC function to calculate the hash code of the payload
      * with the secure token.
      */
-    private static final String HMAC_SHA1 = "HmacSHA1";
+    private static final String ALGORITHM = "HmacSHA256";
 
     /**
      * String encoding to convert byte arrays to strings and vice-versa.
@@ -142,8 +142,8 @@ class TokenStore {
         }
         byte[] b = new byte[20];
         random.nextBytes(b);
-        final SecretKey secretKey = new SecretKeySpec(b, HMAC_SHA1);
-        final Mac m = Mac.getInstance(HMAC_SHA1);
+        final SecretKey secretKey = new SecretKeySpec(b, ALGORITHM);
+        final Mac m = Mac.getInstance(ALGORITHM);
         m.init(secretKey);
         m.update(UTF_8.getBytes(StandardCharsets.UTF_8));
         m.doFinal();
@@ -172,7 +172,7 @@ class TokenStore {
             InvalidKeyException {
 
         String cookiePayload = "" + token + expires + "@" + userId;
-        Mac m = Mac.getInstance(HMAC_SHA1);
+        Mac m = Mac.getInstance(ALGORITHM);
         m.init(key);
         m.update(cookiePayload.getBytes(StandardCharsets.UTF_8));
         String cookieValue = byteToHex(m.doFinal());
@@ -270,7 +270,7 @@ class TokenStore {
             byte[] b = new byte[20];
             random.nextBytes(b);
 
-            SecretKey newToken = new SecretKeySpec(b, HMAC_SHA1);
+            SecretKey newToken = new SecretKeySpec(b, ALGORITHM);
             int nextToken = currentToken + 1;
             if (nextToken == currentTokens.length) {
                 nextToken = 0;
@@ -335,7 +335,7 @@ class TokenStore {
                         if (readBytes != l){
                             throw new IOException("could not confirm bytes read");
                         }
-                        newKeys[i] = new SecretKeySpec(b, HMAC_SHA1);
+                        newKeys[i] = new SecretKeySpec(b, ALGORITHM);
                     } else {
                         newKeys[i] = null;
                     }
