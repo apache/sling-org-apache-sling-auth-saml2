@@ -245,11 +245,6 @@ which is licensed under the Apache-2.0 license.
       <artifactId>opensaml-saml-impl</artifactId>
       <version>${opensaml.version}</version>
     </dependency>
-    <dependency>
-      <groupId>net.shibboleth.utilities</groupId>
-      <artifactId>java-support</artifactId>
-      <version>8.0.0</version>
-    </dependency>
 
 <!-- OpenSAML Dependencies-->
 <!-- METRICS (version used by OpenSAML) -->
