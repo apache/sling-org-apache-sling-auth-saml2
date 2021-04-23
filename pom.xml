@@ -408,4 +408,13 @@ Export-Package:org.apache.jackrabbit.oak.spi.security.authentication.external.*
     </profile>
   </profiles>
 
+<!-- The Shibboleth Repository is needed
+https://wiki.shibboleth.net/confluence/display/DEV/Use+of+Maven+Central
+-->
+<repositories>
+  <repository>
+    <id>shibboleth</id>
+    <url>https://build.shibboleth.net/nexus/content/groups/public</url>
+  </repository>
+</repositories>
 </project>
