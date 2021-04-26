@@ -73,6 +73,7 @@ which is licensed under the Apache-2.0 license.
             <exclude>**/dependency-reduced-pom.xml</exclude>
             <exclude>**/*.vm</exclude>
             <exclude>src/test/resources/*</exclude>
+            <exclude>*.asc.txt</exclude>
           </excludes>
         </configuration>
       </plugin>
@@ -120,6 +121,32 @@ which is licensed under the Apache-2.0 license.
               </goals>
           </execution>
        </executions>
+       <configuration>
+          <keysMapLocations>
+            <!-- Verify signatures of Sling Artifacts -->
+            <keysMapLocation>
+              <location>${project.basedir}/sling.asc.txt</location>
+            </keysMapLocation>
+            <!-- Verify signatures of Shibboleth and OpenSAML Artifacts -->
+            <keysMapLocation>
+              <location>${project.basedir}/shibboleth.asc.txt</location>
+            </keysMapLocation>
+          <!-- for any other artifacts use signature provided in-band, 
+            or configure them unsigned in any.asc.txt  -->
+            <keysMapLocation>
+              <location>${project.basedir}/any.asc.txt</location>
+              <exclude>
+                <pattern>org.apache.sling:.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>net.shibboleth:.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>org.opensaml:.*</pattern>
+              </exclude>
+            </keysMapLocation>
+          </keysMapLocations>
+        </configuration>
       </plugin>
     </plugins> 
   </build>
@@ -408,13 +435,4 @@ Export-Package:org.apache.jackrabbit.oak.spi.security.authentication.external.*
     </profile>
   </profiles>
 
-<!-- The Shibboleth Repository is needed
-https://wiki.shibboleth.net/confluence/display/DEV/Use+of+Maven+Central
--->
-<repositories>
-  <repository>
-    <id>shibboleth</id>
-    <url>https://build.shibboleth.net/nexus/content/groups/public</url>
-  </repository>
-</repositories>
 </project>
