@@ -123,26 +123,46 @@ which is licensed under the Apache-2.0 license.
        </executions>
        <configuration>
           <keysMapLocations>
-            <!-- Verify signatures of Sling Artifacts -->
-            <keysMapLocation>
-              <location>${project.basedir}/sling.asc.txt</location>
-            </keysMapLocation>
-            <!-- Verify signatures of Shibboleth and OpenSAML Artifacts -->
+            <!-- Verify Signatures of Shibboleth, OpenSAML and any other Embedded Artifacts -->
             <keysMapLocation>
               <location>${project.basedir}/shibboleth.asc.txt</location>
             </keysMapLocation>
-          <!-- for any other artifacts use signature provided in-band, 
+          <!-- all other artifacts use signature provided in-band, 
             or configure them unsigned in any.asc.txt  -->
             <keysMapLocation>
               <location>${project.basedir}/any.asc.txt</location>
-              <exclude>
-                <pattern>org.apache.sling:.*</pattern>
-              </exclude>
               <exclude>
                 <pattern>net.shibboleth.utilities:.*</pattern>
               </exclude>
               <exclude>
                 <pattern>org.opensaml:.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>io.dropwizard.metrics:metrics-core.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>com.google.guava:guava.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>com.google.guava:failureaccess.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>org.checkerframework:checker-qual.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>org.apache.velocity:.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>commons-lang:commons-lang.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>com.google.errorprone:error_prone_annotations.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>org.apache.santuario:xmlsec.*</pattern>
+              </exclude>
+              <exclude>
+                <pattern>org.cryptacular:cryptacular.*</pattern>
               </exclude>
             </keysMapLocation>
           </keysMapLocations>
