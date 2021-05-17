@@ -23,7 +23,7 @@
 
   <artifactId>org.apache.sling.auth.saml2</artifactId>
   <name>SAML2 Service Provider</name>
-  <version>0.2.0-SNAPSHOT</version>
+  <version>0.3.0-SNAPSHOT</version>
   <description>A SAML2 Web-profile SSO Service Provider (Sling Authentication) that uses encrypted
     POST Binding for communicating security assertions from an identity provider such as Shibboleth.</description>
 
