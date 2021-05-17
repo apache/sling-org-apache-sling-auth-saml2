@@ -1,0 +1,36 @@
+# Shibboleth
+net.shibboleth.* = \
+    0x6D18FD63708FCCA079B68CCE026691839355EBCA, \ # henri.mikkonen@iki.fi
+    0x5E6D6EAE16C3DA75450B219C9A804E97D7079C77, \ # ian@iay.org.uk
+    0x6519B5DB7C1C8340A954ED0073C937457D0A1B3D, \ # shibboleth@build.opensuse.org
+    0xB5B5DD332142AD657E8D87AC7D27E610B8A3DC52, \ # philip.smart@jisc.ac.uk
+    0x8740208C0E93FEC80EEBF913B77C52EEC21771DD, \ # philip.smart@jisc.ac.uk
+    0xF4FCEFBF07F9E397A9345B9D4D37705B61CB0B3F, \ # putmanb@georgetown.edu
+    0x0E0CA56D354132B5E646C25F49A1796B9B494CB8, \ # putmanb@georgetown.edu
+    0x4AF4D83EEDDF43DA3C06CB3101483F262A4B3FF0, \ # rdw@steadingsoftware.com
+    0xDCAA15007BED9DE690CD9523378B845402277962, \ # cantor.2@osu.edu
+    0x796D70C89BBF8D958925F2ED277EC86A07CEEB8B    # tzeller@dragonacea.biz
+
+# OpenSAML
+org.opensaml.* = \
+    0x6D18FD63708FCCA079B68CCE026691839355EBCA, \ # henri.mikkonen@iki.fi
+    0x5E6D6EAE16C3DA75450B219C9A804E97D7079C77, \ # ian@iay.org.uk
+    0x6519B5DB7C1C8340A954ED0073C937457D0A1B3D, \ # shibboleth@build.opensuse.org
+    0xB5B5DD332142AD657E8D87AC7D27E610B8A3DC52, \ # philip.smart@jisc.ac.uk
+    0x8740208C0E93FEC80EEBF913B77C52EEC21771DD, \ # philip.smart@jisc.ac.uk
+    0xF4FCEFBF07F9E397A9345B9D4D37705B61CB0B3F, \ # putmanb@georgetown.edu
+    0x0E0CA56D354132B5E646C25F49A1796B9B494CB8, \ # putmanb@georgetown.edu
+    0x4AF4D83EEDDF43DA3C06CB3101483F262A4B3FF0, \ # rdw@steadingsoftware.com
+    0xDCAA15007BED9DE690CD9523378B845402277962, \ # cantor.2@osu.edu
+    0x796D70C89BBF8D958925F2ED277EC86A07CEEB8B    # tzeller@dragonacea.biz
+
+# Embedded Dependencies
+io.dropwizard.metrics:metrics-core      = 0x0B9236488A3B927470B4027D2FC1B61A8D1F4BB0
+com.google.guava:guava                  = 0xBDB5FA4FE719D787FB3D3197F6D4A1D411E9D1AE 
+com.google.guava:failureaccess          = 0x56ED3B4843DAACC79DE555557457CA33C3CE9E15
+org.checkerframework:checker-qual       = 0x19BEAB2D799C020F17C69126B16698A4ADF4D638
+org.apache.velocity                     = 0xCE4439C1BEF3DA83B1832F9DBEFEEF227A98B809
+commons-lang:commons-lang               = 0xD196A5E3E70732EEB2E5007F1861C322C56014B2
+com.google.errorprone:error_prone_annotations = 0x7615AD56144DF2376F49D98B1669C4BB543E0445
+org.apache.santuario:xmlsec             = 0xDB45ECD19B97514F727105AE67BF80B10AD53983
+org.cryptacular:cryptacular             = 0x38319E05F62674572CDF886170B2EBE96C112CC9 
