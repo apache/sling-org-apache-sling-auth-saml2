@@ -33,14 +33,15 @@ public interface Saml2UserMgtService {
 
     /**
      * getOrCreateSamlUser(Saml2User user) will be called if userHome is not configured
-     * @param Saml2User user creates the JCR user in the default /home location
+     * @param user creates the JCR user in the default /home location
      * @return returns the existing or new JCR user
      */
     User getOrCreateSamlUser(Saml2User user);
     
     /**
      * getOrCreateSamlUser(Saml2User user) will be called if userHome is configured
-     * @param Saml2User user gets or creates the JCR user in supplied userHome path
+     * @param user gets or creates the JCR user in supplied userHome path
+     * @param userHome is the supplied path under which to find or create the user
      * @return returns the existing or new JCR user
      */
     User getOrCreateSamlUser(Saml2User user, String userHome);
@@ -48,7 +49,7 @@ public interface Saml2UserMgtService {
     /**
      * Users group membership will be updated based on the groups contained in the 
      * configured element of the SAML Assertion
-     * @param Saml2User user to update membership
+     * @param user to update membership
      * @return returns true if the user's group membership was updated
      */
     boolean updateGroupMembership(Saml2User user);
@@ -56,7 +57,7 @@ public interface Saml2UserMgtService {
     /**
      * Users properties will be updated based on user properties contained in the 
      * configured properties of the SAML Assertion
-     * @param Saml2User user to update properties
+     * @param user to update properties
      * @return returns true if the user properties were updated 
      */
     boolean updateUserProperties(Saml2User user);
