@@ -9,9 +9,7 @@
     License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
     OF ANY KIND, either express or implied. See the License for the specific
     language governing permissions and limitations under the License. -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.apache.sling</groupId>
     <artifactId>sling-bundle-parent</artifactId>
@@ -23,7 +21,7 @@
 
   <artifactId>org.apache.sling.auth.saml2</artifactId>
   <name>SAML2 Service Provider</name>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.2.2</version>
   <description>A SAML2 Web-profile SSO Service Provider (Sling Authentication) that uses encrypted
     POST Binding for communicating security assertions from an identity provider such as Shibboleth.</description>
 
@@ -464,4 +462,8 @@ https://wiki.shibboleth.net/confluence/display/DEV/Use+of+Maven+Central
     <url>https://build.shibboleth.net/nexus/content/groups/public</url>
   </repository>
 </repositories>
+
+  <scm>
+    <tag>org.apache.sling.auth.saml2-0.2.2</tag>
+  </scm>
 </project>
