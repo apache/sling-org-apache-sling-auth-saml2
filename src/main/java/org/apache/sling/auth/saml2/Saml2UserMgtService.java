@@ -26,37 +26,44 @@ public interface Saml2UserMgtService {
 
     /**
      * Call setUp before using any other Saml2UserMgtService method
+     * Setup initializes service resolver and called before each use
+     * @return returns true if setup is successful
      */
     boolean setUp();
 
     /**
      * getOrCreateSamlUser(Saml2User user) will be called if userHome is not configured
-     * @param user
-     * @return
+     * @param Saml2User user creates the JCR user in the default /home location
+     * @return returns the existing or new JCR user
      */
     User getOrCreateSamlUser(Saml2User user);
     
     /**
      * getOrCreateSamlUser(Saml2User user) will be called if userHome is configured
-     * @param user
-     * @return
+     * @param Saml2User user gets or creates the JCR user in supplied userHome path
+     * @return returns the existing or new JCR user
      */
     User getOrCreateSamlUser(Saml2User user, String userHome);
     
     /**
      * Users group membership will be updated based on the groups contained in the 
      * configured element of the SAML Assertion
+     * @param Saml2User user to update membership
+     * @return returns true if the user's group membership was updated
      */
     boolean updateGroupMembership(Saml2User user);
 
     /**
      * Users properties will be updated based on user properties contained in the 
      * configured properties of the SAML Assertion
+     * @param Saml2User user to update properties
+     * @return returns true if the user properties were updated 
      */
     boolean updateUserProperties(Saml2User user);
     
     /**
      * Call cleanUp after using Saml2UserMgtService methods
+     * This should be called after using the service to close out the service resolver
      */
     void cleanUp();
 }

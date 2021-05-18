@@ -42,7 +42,7 @@ public class VerifySignatureCredentials extends JksCredentials {
      * @param jksPath The path to the JKS holding the Certification
      * @param jksPassword Password of the Java KeyStore
      * @param certAlias The Alias of the public key credential used to create the X509
-     * @return
+     * @return returns the Credential
      */
 
     public static Credential getCredential(

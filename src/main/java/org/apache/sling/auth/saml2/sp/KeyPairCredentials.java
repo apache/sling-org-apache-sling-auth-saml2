@@ -39,11 +39,11 @@ public class KeyPairCredentials extends JksCredentials {
      * Returns a BasicX509Credential representing the key pair of the SAML Service Provider
      * This credential is used to encrypt and cryptographically sign SAML messages sent to the Identity Provider.
      *
-     * @param jksPath
-     * @param jksPassword
-     * @param certAlias
-     * @param keysPassword
-     * @return
+     * @param jksPath path on the file system, e.g. ./sling/keys/example.jks
+     * @param jksPassword truststore password as char array
+     * @param certAlias alias given to the keystore associated to this Service Provider
+     * @param keysPassword password for the keystore associated to this Service Provider
+     * @return returns the SP X509 Credential
      */
     public static BasicX509Credential getCredential (
             final String jksPath,
@@ -56,7 +56,7 @@ public class KeyPairCredentials extends JksCredentials {
             X509Certificate cert = (X509Certificate) keyStore.getCertificate(certAlias);
             PublicKey publicKey = cert.getPublicKey();
             KeyPair keyPair = new KeyPair(publicKey, (PrivateKey) key);
-            return CredentialSupport.getSimpleCredential(cert,keyPair.getPrivate() );
+            return CredentialSupport.getSimpleCredential(cert,keyPair.getPrivate());
         } catch (java.security.KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException e) {
             throw new SAML2RuntimeException(e);
         }

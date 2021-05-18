@@ -40,8 +40,8 @@ public class SessionStorage {
 
     /**
      * Setting String Attributes. Store string info in an http session attribute.
-      * @param request
-     * @param info
+      * @param request http request of the user
+     *  @param info set the value of the attribute
      */
     public void setString(HttpServletRequest request, String info) {
         HttpSession session = request.getSession();
@@ -50,7 +50,8 @@ public class SessionStorage {
 
     /**
      * Getting String Attributes
-     * @param request
+     * @param request http request of the user
+     * @return value of the session attribute
      */
     public String getString(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -65,8 +66,7 @@ public class SessionStorage {
 
     /**
      * Remove this attribute from the http session
-     * @param request
-     * @param response
+     * @param request http request of the user
      */
     public void clear(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
