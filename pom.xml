@@ -51,7 +51,7 @@ which is licensed under the Apache-2.0 license.
     <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-auth-saml2.git</url>
     <tag>HEAD</tag>
  </scm>
- 
+
   <build>
     <plugins>
       <plugin>
@@ -470,7 +470,4 @@ https://wiki.shibboleth.net/confluence/display/DEV/Use+of+Maven+Central
   </repository>
 </repositories>
 
-  <scm>
-    <tag>org.apache.sling.auth.saml2-0.2.2</tag>
-  </scm>
 </project>
