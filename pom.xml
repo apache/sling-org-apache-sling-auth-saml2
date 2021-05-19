@@ -466,7 +466,7 @@ https://wiki.shibboleth.net/confluence/display/DEV/Use+of+Maven+Central
 <repositories>
   <repository>
     <id>shibboleth</id>
-    <url>https://build.shibboleth.net/nexus/content/groups/public</url>
+    <url>https://build.shibboleth.net/nexus/content/repositories/releases/</url>
   </repository>
 </repositories>
 
