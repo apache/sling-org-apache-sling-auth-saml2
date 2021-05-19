@@ -21,7 +21,7 @@
 
   <artifactId>org.apache.sling.auth.saml2</artifactId>
   <name>SAML2 Service Provider</name>
-  <version>0.2.2</version>
+  <version>0.2.3-SNAPSHOT</version>
   <description>A SAML2 Web-profile SSO Service Provider (Sling Authentication) that uses encrypted
     POST Binding for communicating security assertions from an identity provider such as Shibboleth.</description>
 
@@ -49,7 +49,7 @@ which is licensed under the Apache-2.0 license.
     <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-auth-saml2.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-auth-saml2.git</developerConnection>
     <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-auth-saml2.git</url>
-    <tag>org.apache.sling.auth.saml2-0.2.2</tag>
+    <tag>HEAD</tag>
  </scm>
 
   <build>
