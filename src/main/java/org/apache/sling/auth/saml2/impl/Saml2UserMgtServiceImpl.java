@@ -67,6 +67,8 @@ public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
                     "Check mapping org.apache.sling.auth.saml2:{}={}", SERVICE_NAME, SERVICE_USER, e);
         } catch (RepositoryException e) {
             logger.error("RepositoryException", e);
+        } catch (Exception e){
+            logger.error("Could not setup Saml2UserMgtService", e);
         }
         return false;
     }
