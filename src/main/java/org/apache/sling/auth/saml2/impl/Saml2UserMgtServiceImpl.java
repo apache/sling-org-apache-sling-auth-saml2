@@ -36,6 +36,8 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
+
 
 @Component(service={Saml2UserMgtService.class}, immediate = true)
 public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
@@ -59,6 +61,10 @@ public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
             logger.info(this.resourceResolver.getUserID());
             session = this.resourceResolver.adaptTo(Session.class);
             JackrabbitSession jrSession = (JackrabbitSession) session;
+            if (Objects.isNull(jrSession)){
+                logger.error("Could not setup Saml2UserMgtService. JackrabbitSession was null.");
+                return false;
+            }
             userManager = jrSession.getUserManager();
             vf = this.session.getValueFactory();
             return true;
@@ -67,8 +73,6 @@ public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
                     "Check mapping org.apache.sling.auth.saml2:{}={}", SERVICE_NAME, SERVICE_USER, e);
         } catch (RepositoryException e) {
             logger.error("RepositoryException", e);
-        } catch (Exception e){
-            logger.error("Could not setup Saml2UserMgtService", e);
         }
         return false;
     }
