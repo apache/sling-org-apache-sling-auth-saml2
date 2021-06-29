@@ -4,16 +4,24 @@ Bundle-Activator: org.apache.sling.auth.saml2.Activator
 Jaas-ModuleClass: org.apache.sling.auth.saml2.sp.Saml2LoginModule
 -snapshot: SNAPSHOT
 -noextraheaders: true
-Import-Package:!com.beust*,!antlr*,!org.apache.log.*,!org.apache.oro.text.perl*,!com.google.apphosting*,!com.google.appengine.api*,\
-!org.apache.tools.ant.*,!org.jdom*,!com.sun.org.apache.xerces.internal*,!sun.io,!org.bouncycastle.*,!javax.xml.bind.*,\
-!com.werken.xpath.*,!org.apache.xml.dtm.*,!org.apache.xml.utils.*,!org.apache.xpath.*,\
-!junit.framework*,!org.dom4j.*,!com.sun.msv.*,!sun.misc,javax.annotation;version=0.0.0,!org.relaxng.datatype.*,*
 -removeheaders: Include-Resource, Private-Package
+Import-Package:\
+!com.beust*,\
+!javax.annotation*,\
+!javax.xml.bind.*,\
+!org.apache.xml.dtm.*,\
+!org.apache.xml.utils.*,\
+!org.apache.xpath.*,\
+!org.bouncycastle.*,\
+!sun.misc,\
+!com.google.apphosting*,\
+!com.google.appengine.api*,\
+*
 -includeresource:\
-metrics-core-[0-9\.]+.jar;lib:=true,\
 guava-[0-9\.]+-jre.jar;lib:=true,\
 failureaccess-[0-9\.]+.jar;lib:=true,\
 checker-qual-[0-9\.]+.jar;lib:=true,\
+error_prone_annotations-[0-9\.]+.jar;lib:=true,\
 opensaml-core-[0-9\.]+.jar;lib:=true,\
 opensaml-saml-impl-[0-9\.]+.jar;lib:=true,\
 opensaml-saml-api-[0-9\.]+.jar;lib:=true,\
@@ -27,8 +35,4 @@ opensaml-messaging-api-[0-9\.]+.jar;lib:=true,\
 opensaml-soap-api-[0-9\.]+.jar;lib:=true,\
 opensaml-soap-impl-[0-9\.]+.jar;lib:=true,\
 java-support-[0-9\.]+.jar;lib:=true,\
-velocity-[0-9\.]+.jar;lib:=true,\
-commons-lang-[0-9\.]+.jar;lib:=true,\
-error_prone_annotations-[0-9\.]+.jar;lib:=true,\
-xmlsec-[0-9\.]+.jar;lib:=true,\
-cryptacular-[0-9\.]+.jar;lib:=true,\
+cryptacular-[0-9\.]+.jar;lib:=true
