@@ -405,7 +405,7 @@ class TokenStore {
         final MessageDigest md;
 
         try {
-            md = MessageDigest.getInstance("SHA");
+            md = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException nsae) {
             throw new InternalError("internal error: SHA-1 not available.");
         }
