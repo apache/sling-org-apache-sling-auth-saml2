@@ -58,6 +58,10 @@ public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
             Map<String, Object> param = new HashMap<>();
             param.put(ResourceResolverFactory.SUBSERVICE, SERVICE_NAME);
             this.resourceResolver = resolverFactory.getServiceResourceResolver(param);
+            if (Objects.isNull(this.getResourceResolver())){
+                logger.error("Could not setup Saml2UserMgtService. Problem with Service User.");
+                return false;
+            }
             logger.info(this.resourceResolver.getUserID());
             session = this.resourceResolver.adaptTo(Session.class);
             JackrabbitSession jrSession = (JackrabbitSession) session;
@@ -75,6 +79,10 @@ public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
             logger.error("RepositoryException", e);
         }
         return false;
+    }
+
+    ResourceResolver getResourceResolver(){
+        return this.resourceResolver;
     }
 
     @Override

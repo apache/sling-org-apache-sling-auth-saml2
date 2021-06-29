@@ -22,6 +22,7 @@ package org.apache.sling.auth.saml2.impl;
 import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.auth.core.spi.AuthenticationInfo;
 import org.hamcrest.core.StringStartsWith;
 import org.jmock.Expectations;
@@ -74,6 +75,18 @@ public class AuthenticationHandlerSAML2ImplTest {
     @Test
     public void validTokenTest() throws Exception {
         assertTrue(store.isValid(encodedToken));
+    }
+
+    @Test
+    public void SamlUserMgtServiceImplNPETest() throws  Exception {
+        Saml2UserMgtServiceImpl saml2UserMgtService = Mockito.mock(Saml2UserMgtServiceImpl.class);
+        when(saml2UserMgtService.getResourceResolver()).thenReturn(null);
+        assertFalse(saml2UserMgtService.setUp());
+
+        Saml2UserMgtServiceImpl saml2UserMgtService2 = Mockito.mock(Saml2UserMgtServiceImpl.class);
+        ResourceResolver resourceResolver = Mockito.mock(ResourceResolver.class);
+        when(saml2UserMgtService2.getResourceResolver()).thenReturn(resourceResolver);
+        assertFalse(saml2UserMgtService.setUp());
     }
 
     @Test
