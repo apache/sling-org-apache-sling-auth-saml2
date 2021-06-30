@@ -23,6 +23,7 @@ import org.apache.jackrabbit.api.security.user.User;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.auth.core.spi.AuthenticationInfo;
 import org.hamcrest.core.StringStartsWith;
 import org.jmock.Expectations;
@@ -41,6 +42,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.UUID;
 import static org.apache.sling.auth.saml2.impl.AuthenticationHandlerSAML2Impl.TOKEN_FILENAME;
 import static org.junit.Assert.assertEquals;
@@ -48,6 +50,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 public class AuthenticationHandlerSAML2ImplTest {
@@ -79,14 +82,18 @@ public class AuthenticationHandlerSAML2ImplTest {
 
     @Test
     public void SamlUserMgtServiceImplNPETest() throws  Exception {
-        Saml2UserMgtServiceImpl saml2UserMgtService = Mockito.mock(Saml2UserMgtServiceImpl.class);
-        when(saml2UserMgtService.getResourceResolver()).thenReturn(null);
+        Saml2UserMgtServiceImpl saml2UserMgtService = new Saml2UserMgtServiceImpl();
+        ResourceResolverFactory resourceResolverFactory = Mockito.mock(ResourceResolverFactory.class);
+        when(resourceResolverFactory.getServiceResourceResolver(any(HashMap.class))).thenReturn(null);
+        saml2UserMgtService.setResolverFactory(resourceResolverFactory);
         assertFalse(saml2UserMgtService.setUp());
 
-        Saml2UserMgtServiceImpl saml2UserMgtService2 = Mockito.mock(Saml2UserMgtServiceImpl.class);
+        Saml2UserMgtServiceImpl saml2UserMgtService2 = new Saml2UserMgtServiceImpl();
+        ResourceResolverFactory resourceResolverFactory2 = Mockito.mock(ResourceResolverFactory.class);
         ResourceResolver resourceResolver = Mockito.mock(ResourceResolver.class);
-        when(saml2UserMgtService2.getResourceResolver()).thenReturn(resourceResolver);
-        assertFalse(saml2UserMgtService.setUp());
+        when(resourceResolverFactory2.getServiceResourceResolver(any(HashMap.class))).thenReturn(resourceResolver);
+        saml2UserMgtService2.setResolverFactory(resourceResolverFactory2);
+        assertFalse(saml2UserMgtService2.setUp());
     }
 
     @Test

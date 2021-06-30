@@ -85,6 +85,14 @@ public class Saml2UserMgtServiceImpl implements Saml2UserMgtService {
         return this.resourceResolver;
     }
 
+    void setResolverFactory(ResourceResolverFactory resourceResolverFactory){
+        this.resolverFactory = resourceResolverFactory;
+    }
+
+    ResourceResolverFactory getResolverFactory(){
+        return this.resolverFactory;
+    }
+
     @Override
     public void cleanUp() {
         resourceResolver.close();
