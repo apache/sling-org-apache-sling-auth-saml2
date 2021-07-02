@@ -344,11 +344,6 @@ which is licensed under the Apache-2.0 license.
       <artifactId>error_prone_annotations</artifactId>
       <version>2.3.4</version>
     </dependency>
-    <dependency>
-      <groupId>org.checkerframework</groupId>
-      <artifactId>checker-qual</artifactId>
-      <version>2.11.1</version>
-    </dependency>
 
 <!--    VELOCITY -->
     <dependency>
