@@ -118,7 +118,7 @@ which is licensed under the Apache-2.0 license.
       <plugin>
         <groupId>org.simplify4u.plugins</groupId>
         <artifactId>pgpverify-maven-plugin</artifactId>
-        <version>1.12.0</version>
+        <version>1.14.1</version>
         <executions>
           <execution>
               <goals>
