@@ -4,3 +4,4 @@ javax.inject                    = noSig
 org.codehaus.jackson            = noSig
 org.ow2.asm:*:[6.0,7.2)         = noSig
 net.jcip                        = noSig
+org.reflections                 = noKey
