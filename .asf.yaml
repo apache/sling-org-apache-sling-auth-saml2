@@ -1,5 +1,16 @@
 github:
-  description: An OSGi bundle that provides a SAML2 Web Profile Service Provider Authentication for Apache Sling
+  description: "An OSGi bundle that provides a SAML2 Web Profile Service Provider\
+    \ Authentication for Apache Sling"
   labels:
-    - sling
-    - java
+  - "sling"
+  - "java"
+  autolink_jira:
+  - "SLING"
+  - "OAK"
+  - "JCR"
+  - "JCRVLT"
+  - "INFRA"
+  - "FELIX"
+  - "MNG"
+notifications:
+  jira_options: "link"
